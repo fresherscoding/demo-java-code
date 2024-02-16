@@ -1,17 +1,7 @@
 pipeline{
 	agent any
 	
-	stages{
-		stage("Cleanup"){
-			steps{
-				deleteDir()
-			}
-		}
-		stage("Clone repo"){
-			steps{
-				sh "git clone https://github.com/fresherscoding/demo-java-code.git"
-			}
-		}
+	stages{		
 		stage("Build"){
 			steps{
 				dir("demo-java-code/simple-code"){
