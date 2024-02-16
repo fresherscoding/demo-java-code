@@ -5,7 +5,7 @@ pipeline{
 		stage("Build"){
 			steps{
 				dir("demo-java-code/simple-code"){
-					sh "mvn -B sub_branch clean package"
+					sh "mvn clean install"
 				}
 			}
 		}
