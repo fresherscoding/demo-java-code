@@ -2,28 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout code from Git repository
-                script {
-                    git branch: 'main', url: 'https://github.com/fresherscoding/demo-java-code.git'
-                }
-            }
-        }
-
-        stage('Build') {
+         stage('Build') {
             steps {
                 dir('demo-java-code/simple-code'){
-					sh 'mvn clean install'
-				}
+			sh 'mvn clean install'
+		}
             }
         }
 
         stage('Test') {
             steps {
                 dir('demo-java-code/simple-code'){
-					sh 'mvn test'
-				}
+			sh 'mvn test'
+		}
             }
         }
 		
