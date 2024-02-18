@@ -1,25 +1,34 @@
-pipeline{
-	agent any
-	
-	stages{		
-		stage("Build"){
-			steps{
-				dir("demo-java-code/simple-code"){
-					sh "mvn clean install"
-				}
-			}
-		}
-		stage("Test"){
-			steps{
-				dir("demo-java-code/simple-code"){
-					sh "mvn test"	
-				}
-			}
-		}
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from Git repository
+                script {
+                    git branch: 'main', url: 'https://github.com/fresherscoding/demo-java-code.git'
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Your build steps go here
+                sh 'mvn clean install' // Example Maven build command
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Your test steps go here
+                sh 'mvn test' // Example Maven test command
+            }
+        }
+		
 		stage("Complete"){
 			steps{
 				echo "Project is installed and up."
 			}
 		}
-	}
+    }
 }
