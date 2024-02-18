@@ -20,7 +20,7 @@ pipeline {
 		
 	stage('Complete'){
 		steps{
-			echo "Project is installed and up."
+			echo "Project setup is done."
 		}
 	}
     }
