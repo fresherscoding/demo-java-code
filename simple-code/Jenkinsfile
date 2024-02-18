@@ -4,7 +4,7 @@ pipeline {
     stages {
          stage('Build') {
             steps {
-                dir('demo-java-code\simple-code'){
+                dir('simple-code'){
 			sh 'mvn clean install'
 		}
             }
@@ -12,7 +12,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                dir('demo-java-code\simple-code'){
+                dir('simple-code'){
 			sh 'mvn test'
 		}
             }
