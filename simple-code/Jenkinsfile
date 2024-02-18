@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+         stage('Build') {
+            steps {
+                dir('simple-code'){
+			sh 'mvn clean install'
+		}
+            }
+        }
+
+        stage('Test') {
+            steps {
+                dir('simple-code'){
+			sh 'mvn test'
+		}
+            }
+        }
+		
+	stage('Complete'){
+		steps{
+			echo "Project setup is done."
+		}
+	}
+    }
+}
